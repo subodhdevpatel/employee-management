@@ -2,6 +2,16 @@
 
 A modern full-stack employee management application built with GraphQL, React, and MongoDB. This project demonstrates enterprise-level architecture with a stunning user interface and robust backend.
 
+## 🚀 Live Demo
+
+- **Frontend (Vercel):** [https://employee-management-six-blue.vercel.app](https://employee-management-six-blue.vercel.app)
+- **Backend API (Render):** [https://employee-management-api-l67b.onrender.com](https://employee-management-api-l67b.onrender.com)
+- **GraphQL Playground:** [https://employee-management-api-l67b.onrender.com/graphql](https://employee-management-api-l67b.onrender.com/graphql)
+
+### Demo Credentials
+- **Admin:** `admin@company.com` / `admin123`
+- **Employee:** `employee@company.com` / `employee123`
+
 ## Features
 
 ### Backend (GraphQL API)
@@ -42,7 +52,7 @@ A modern full-stack employee management application built with GraphQL, React, a
 - Apollo Client (GraphQL)
 - Vite (build tool)
 - Framer Motion (animations)
-- CSS3 with custom design system
+- Tailwind CSS with custom configuration
 
 ## Getting Started
 
@@ -72,13 +82,16 @@ npm install
 
 ### Configuration
 
-The backend uses environment variables. A `.env` file has been created with default values:
+#### Backend Environment Variables
 
-```
+The backend uses environment variables. A `.env` file should be created based on `.env.example`:
+
+```bash
 MONGODB_URI=mongodb://localhost:27017/employee_management
-JWT_SECRET=emp_mgmt_secret_key_2024_secure_token_xyz
+JWT_SECRET=your_super_secret_jwt_key_change_this_in_production
 PORT=4000
 NODE_ENV=development
+CORS_ORIGINS=http://localhost:5173,http://localhost:4173
 ```
 
 Make sure MongoDB is running on your system before starting the backend.
@@ -194,16 +207,6 @@ toggleFlag(id: ID!): Employee!
 4. **Input Validation**: Mongoose schema validation and GraphQL type checking
 5. **Authorization Middleware**: Protected mutations and queries
 
-### Design System
-
-The frontend uses a custom design system with:
-- CSS custom properties for theming
-- Glassmorphism effects with backdrop blur
-- Smooth animations and transitions
-- Responsive grid layouts
-- Premium color palette with gradients
-- Consistent spacing and typography
-
 ## Project Structure
 
 ```
@@ -221,26 +224,16 @@ employee-management/
 │   │   ├── graphql/      # GraphQL queries and mutations
 │   │   ├── lib/          # Apollo Client setup
 │   │   ├── App.jsx       # Main application
-│   │   └── index.css     # Design system
+│   │   └── index.css     # Tailwind base styles and custom utilities
+│   ├── tailwind.config.js # Tailwind configuration
+│   ├── postcss.config.js  # PostCSS configuration
 │   └── package.json
 └── README.md
 ```
 
-## Development Notes
-
-This project was built with production-quality code following best practices:
-- Clean code architecture with separation of concerns
-- Comprehensive error handling
-- Type safety with GraphQL schemas
-- Responsive design for all screen sizes
-- Accessibility considerations
-- Performance optimizations throughout
-
-The code is written at a senior developer level with minimal comments, focusing on self-documenting code and clear naming conventions.
-
 ## Versions
 
-- Node.js: requires v18+. Project has been tested with `v24.11.1`.
+- Node.js: requires v18+.
 - Vite: v5.x (frontend uses `vite` build tool with `@vitejs/plugin-react`).
 
 If you run into build errors related to modern syntax (e.g., nullish assignment), ensure your Node.js version is >= 18, then reinstall and rebuild the frontend:
@@ -250,22 +243,3 @@ cd frontend
 npm ci
 npm run build
 ```
-
-## Future Enhancements
-
-Potential features to add:
-- Employee photo uploads
-- Advanced analytics dashboard
-- Export to CSV/PDF
-- Email notifications
-- Audit logs
-- Multi-language support
-- Dark/Light theme toggle
-
-## License
-
-MIT
-
-## Author
-
-Built with expertise in GraphQL, React, and modern web development practices.

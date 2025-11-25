@@ -44,8 +44,13 @@ const server = new ApolloServer({
 
 await server.start();
 
+// Parse CORS origins from environment variable
+const allowedOrigins = process.env.CORS_ORIGINS
+    ? process.env.CORS_ORIGINS.split(',').map(origin => origin.trim())
+    : ['http://localhost:5173'];
+
 app.use(cors({
-    origin: ['http://localhost:5173', 'http://localhost:4173'],
+    origin: allowedOrigins,
     credentials: true
 }));
 
@@ -73,6 +78,6 @@ app.get('/health', (req, res) => {
 });
 
 app.listen(PORT, () => {
-    console.log(`🚀 Server running at http://localhost:${PORT}/graphql`);
-    console.log(`🏥 Health check at http://localhost:${PORT}/health`);
+    console.log(`Server running at http://localhost:${PORT}/graphql`);
+    console.log(`Health check at http://localhost:${PORT}/health`);
 });
